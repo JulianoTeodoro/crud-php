@@ -35,7 +35,7 @@ $lista = $usuarioDao->findAll();
 
 <?php
 
-$senha = '123456';
+/*$senha = '123456';
 $hash = password_hash($senha, PASSWORD_BCRYPT);
 
 $hash2 = '$2y$10$0xh55bXQ9FAoO7gDdQi35uk63QZWGY1v1TwiOuWdK0YuJa9vDiflS';
@@ -68,3 +68,4 @@ for ($i = 0; $i < 12; $i++) {
 
     echo $i.'</br>';
 }
+APENAS UM RASCUNHO */ 

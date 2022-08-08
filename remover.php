@@ -1,27 +1,22 @@
 <?php
 
 require 'config.php';
+require 'dao/UsuarioDAO.php';
+$usuarioDao = new UsuarioDaoMySql($pdo);
 
 $id = filter_input(INPUT_GET, 'id');
 
 if($id) {
 
-    $sql = $pdo->prepare('SELECT * from usuarios WHERE id = :id');
-    $sql->bindValue(':id', $id);
-    $sql->execute();
-
-    if($sql->rowCount() > 0) {
-        $sql = $pdo->prepare('DELETE FROM usuarios WHERE id = :id');
-        $sql->bindValue(':id', $id);
-        $sql->execute();   
+    if($usuarioDao->findByID($id) === true) {
+        $usuarioDao->delete($id);
         header('Location: index.php');
-        exit;         
+        exit;
     }
     else {
         header('Location: index.php');
         exit;    
     }
-
 }
 else {
     header('Location: index.php');
